@@ -43,3 +43,20 @@ class Cliente(models.Model):
     
     def __str__(self):
         return self.nombre
+
+class Mesa(models.Model):
+
+    OCUPADA = 'OCUPADA'
+    RESERVADA = 'RESERVADA'
+    DISPONIBLE = 'DISPONIBLE'
+    
+
+    STATE_CHOICES = (
+        (OCUPADA, 'OCUPADA'),
+        (RESERVADA, 'RESERVADA'),
+        (DISPONIBLE,'DISPONIBLE'),
+    )
+    
+    numero = models.IntegerField(primary_key= True)
+    capacidad = models.IntegerField(blank=True)
+    disponibilidad =  models.CharField(max_length=11, choices=STATE_CHOICES, default=DISPONIBLE)

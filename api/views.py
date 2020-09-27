@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics
-from .models import Cliente, Orden
-from .serializers import ClienteSerializer, OrdenSerializer
+from .models import Cliente, Orden, Mesa
+from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
@@ -29,6 +29,20 @@ class OrdenDetail(generics.RetrieveAPIView):
 class OrdenUpdate(generics.UpdateAPIView):
     queryset = Orden.objects.all()
     serializer_class = OrdenSerializer
+    lookup_field = 'numero'
+
+class MesaList(generics.ListCreateAPIView):
+    queryset = Mesa.objects.all()
+    serializer_class = MesaSerializer
+
+class MesaDetail(generics.RetrieveAPIView):
+    queryset = Mesa.objects.all()
+    serializer_class = MesaSerializer
+    lookup_field = 'numero'
+
+class MesaUpdate(generics.UpdateAPIView):
+    queryset = Mesa.objects.all()
+    serializer_class = MesaSerializer
     lookup_field = 'numero'
 
 class Logout(APIView):
