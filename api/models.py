@@ -60,3 +60,27 @@ class Mesa(models.Model):
     numero = models.IntegerField(primary_key= True)
     capacidad = models.IntegerField(blank=True)
     disponibilidad =  models.CharField(max_length=11, choices=STATE_CHOICES, default=DISPONIBLE)
+
+    def __str__(self):
+        return str(self.numero)
+
+class Producto(models.Model):
+
+    GRANEL = 'GRANEL'
+    ENVASADO = 'ENVASADO'
+
+    STATE_CHOICES = (
+        (GRANEL, 'GRANEL'),
+        (ENVASADO, 'ENVASADO'),
+    )
+
+    numero = models.AutoField(primary_key= True)
+    nombre = models.CharField(max_length = 255)
+    costo = models.IntegerField(default=0)
+    stock = models.IntegerField(default=0)
+    embalaje = models.CharField(max_length=11, choices=STATE_CHOICES, default=GRANEL)
+    detalle = models.CharField(max_length = 300, blank=True)
+
+    def __str__(self):
+        return self.nombre
+

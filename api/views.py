@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics
-from .models import Cliente, Orden, Mesa
-from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer
+from .models import Cliente, Orden, Mesa, Producto
+from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer, ProductoSerializer
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
@@ -17,6 +17,7 @@ class ClienteList(generics.ListCreateAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
     
+    
 class OrdenList(generics.ListCreateAPIView):
     queryset = Orden.objects.all()
     serializer_class = OrdenSerializer
@@ -31,6 +32,7 @@ class OrdenUpdate(generics.UpdateAPIView):
     serializer_class = OrdenSerializer
     lookup_field = 'numero'
 
+
 class MesaList(generics.ListCreateAPIView):
     queryset = Mesa.objects.all()
     serializer_class = MesaSerializer
@@ -44,6 +46,22 @@ class MesaUpdate(generics.UpdateAPIView):
     queryset = Mesa.objects.all()
     serializer_class = MesaSerializer
     lookup_field = 'numero'
+
+
+class ProductoList(generics.ListCreateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+class ProductoDetail(generics.RetrieveAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    lookup_field = 'numero'
+
+class ProductoUpdate(generics.UpdateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    lookup_field = 'numero'
+
 
 class Logout(APIView):
     def get(self, request, format=None):

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cliente, Orden, Mesa
+from .models import Cliente, Orden, Mesa, Producto
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,4 +33,16 @@ class MesaSerializer(serializers.ModelSerializer):
             'numero',
             'capacidad',
             'disponibilidad'
+        )
+
+class ProductoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = (
+            'numero',
+            'nombre',
+            'costo',
+            'stock',
+            'embalaje',
+            'detalle'
         )
