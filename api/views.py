@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics
-from .models import Cliente, Orden, Mesa, Producto
-from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer, ProductoSerializer
+from .models import Cliente, Orden, Mesa, Producto, Receta
+from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer, ProductoSerializer, RecetaSerializer
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
@@ -16,7 +16,7 @@ from rest_framework.decorators import api_view
 class ClienteList(generics.ListCreateAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
-    
+
     
 class OrdenList(generics.ListCreateAPIView):
     queryset = Orden.objects.all()
@@ -60,6 +60,21 @@ class ProductoDetail(generics.RetrieveAPIView):
 class ProductoUpdate(generics.UpdateAPIView):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+    lookup_field = 'numero'
+
+
+class RecetaList(generics.ListCreateAPIView):
+    queryset = Receta.objects.all()
+    serializer_class = RecetaSerializer
+
+class RecetaDetail(generics.RetrieveAPIView):
+    queryset = Receta.objects.all()
+    serializer_class = RecetaSerializer
+    lookup_field = 'numero'
+
+class RecetaUpdate(generics.UpdateAPIView):
+    queryset = Receta.objects.all()
+    serializer_class = RecetaSerializer
     lookup_field = 'numero'
 
 

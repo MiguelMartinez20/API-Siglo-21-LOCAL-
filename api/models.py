@@ -84,3 +84,72 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
 
+class Receta(models.Model):
+
+    ENTRADA = 'ENTRADA'
+    PLATO_FONDO = 'PLATO_FONDO'
+    APERITIVO = 'APERITIVO'
+    AGREGADO = 'AGREGADO'
+    BEBESTIBLE = 'BEBESTIBLE'
+    BAJATIVO = 'BAJATIVO'
+    POSTRE = 'POSTRE'
+
+    SOPAS = 'SOPAS'
+    CREMAS = 'CREMAS'
+    CARNES_ROJAS = 'CARNES_ROJAS'
+    CARNES_BLANCAS = 'CARNES_BLANCAS'
+    PESCADOS = 'PESCADOS'
+    MARISCOS = 'MARISCOS'
+    CALDOS = 'CALDOS'
+    LEGUMBRES = 'LEGUMBRES'
+    PASTELES = 'PASTELES'
+    EMBUTIDOS = 'EMBUTIDOS'
+    EMPANADAS = 'EMPANADAS'
+    ENSALADAS = 'ENSALADAS'
+    VINOS = 'VINOS'
+    BEBIDAS = 'BEBIDAS'
+    JUGOS = 'JUGOS'
+    HELADOS = 'HELADOS'
+    TORTAS = 'TORTAS'
+    KUCHENS = 'KUCHENS'
+
+    STATE_CHOICES1 = (
+        (ENTRADA, 'ENTRADA'),
+        (PLATO_FONDO, 'PLATO_FONDO'),
+        (APERITIVO, 'APERITIVO'),
+        (AGREGADO, 'AGREGADO'),
+        (BEBESTIBLE, 'BEBESTIBLE'),
+        (BAJATIVO, 'BAJATIVO'),
+        (POSTRE, 'POSTRE'),
+    )
+
+    STATE_CHOICES2 = (
+        (SOPAS, 'SOPAS'),
+        (CREMAS, 'CREMAS'),
+        (CARNES_ROJAS, 'CARNES_ROJAS'),
+        (CARNES_BLANCAS, 'CARNES_BLANCAS'),
+        (PESCADOS, 'PESCADOS'),
+        (MARISCOS, 'MARISCOS'),
+        (CALDOS, 'CALDOS'),
+        (LEGUMBRES, 'LEGUMBRES'),
+        (PASTELES, 'PASTELES'),
+        (EMBUTIDOS, 'EMBUTIDOS'),
+        (EMPANADAS, 'EMPANADAS'),
+        (VINOS, 'VINOS'),
+        (BEBIDAS, 'BEBIDAS'),
+        (JUGOS, 'JUGOS'),
+        (HELADOS, 'HELADOS'),
+        (TORTAS, 'TORTAS'),
+        (KUCHENS, 'KUCHENS'),
+    )
+
+    numero = models.AutoField(primary_key= True)
+    nombre = models.CharField(max_length = 255)
+    ingredientes = models.CharField(max_length = 255)
+    t_preparacion = models.IntegerField(default=0)
+    precio = models.IntegerField(default=0)
+    grupo = models.CharField(max_length=20, choices=STATE_CHOICES1, default=ENTRADA)
+    sub_grupo = models.CharField(max_length=20, choices=STATE_CHOICES2)
+
+    def __str__(self):
+        return self.nombre
