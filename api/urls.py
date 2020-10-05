@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your urls here.
 
 from django.urls import path
-from .views import ClienteList, OrdenList, OrdenUpdate, OrdenDetail, MesaList, MesaDetail, MesaUpdate, ProductoList, ProductoDetail, ProductoUpdate, RecetaList, RecetaDetail, RecetaUpdate, Logout
+from .views import ClienteList, OrdenList, OrdenUpdate, OrdenDetail, MesaList, MesaDetail, MesaUpdate, ProductoList, ProductoDetail, ProductoUpdate, RecetaList, RecetaDetail, RecetaUpdate, MovimientoList, MovimientoDetail, MovimientoUpdate, Logout
 
 urlpatterns = [
     path('cliente/', ClienteList.as_view(), name='cliente_list'),
@@ -19,5 +19,8 @@ urlpatterns = [
     path('receta/', RecetaList.as_view(), name='receta_list'),
     path('receta/<int:numero>/', RecetaDetail.as_view(), name='receta_detail'),
     path('receta/<int:numero>/editar_receta/', RecetaUpdate.as_view(), name='receta_update'),
+    path('movimiento/', MovimientoList.as_view(), name='movimiento_list'),
+    path('movimiento/<int:numero>/', MovimientoDetail.as_view(), name='movimiento_detail'),
+    path('movimiento/<int:numero>/editar_movimiento/', MovimientoUpdate.as_view(), name='movimiento_update'),
     path('logout/', Logout.as_view(), name='logout'),
 ]

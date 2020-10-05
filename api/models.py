@@ -153,3 +153,14 @@ class Receta(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Movimiento (models.Model):
+
+    numero = models.AutoField(primary_key= True)
+    ingreso = models.IntegerField(default=0)
+    egreso = models.IntegerField(default=0)
+    fecha = models.DateTimeField(default=timezone.now, blank=True)
+    detalle = models.CharField(max_length = 255)
+
+    def __str__(self):
+        return str(self.numero)
