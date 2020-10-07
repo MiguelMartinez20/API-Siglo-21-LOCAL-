@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your urls here.
 
 from django.urls import path
-from .views import ClienteList, OrdenList, OrdenUpdate, OrdenDetail, MesaList, MesaDetail, MesaUpdate, ProductoList, ProductoDetail, ProductoUpdate, RecetaList, RecetaDetail, RecetaUpdate, MovimientoList, MovimientoDetail, MovimientoUpdate, Logout
+from .views import ClienteList, OrdenList, OrdenUpdate, OrdenDetail, MesaList, MesaDetail, MesaUpdate, ProductoList, ProductoDetail, ProductoUpdate, RecetaList, RecetaDetail, RecetaUpdate, Logout, MovimientoList, MovimientoDetail, MovimientoUpdate 
 
 urlpatterns = [
     path('cliente/', ClienteList.as_view(), name='cliente_list'),

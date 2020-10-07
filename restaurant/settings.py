@@ -93,7 +93,7 @@ DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
     'NAME':     '192.168.0.2:1521/xe',
-    'USER':     'c##sigloxxi',
+    'USER':     'c##siglo',
     'PASSWORD': 'django',
     'TEST':{
             'USER': 'default_test',

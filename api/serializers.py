@@ -5,11 +5,12 @@ class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = (
+            'id',
             'run',
+            'dv',
             'nombre',
             'telefono',
-            'email',
-            'reserva',
+            'email'
         )
 
 class OrdenSerializer(serializers.ModelSerializer):
@@ -23,7 +24,9 @@ class OrdenSerializer(serializers.ModelSerializer):
             'detalle',
             'total',
             'mesa',
-            'minutos'
+            'minutos', 
+            'recetas',
+            'movimiento'
         )
 
 class MesaSerializer(serializers.ModelSerializer):
@@ -44,7 +47,8 @@ class ProductoSerializer(serializers.ModelSerializer):
             'costo',
             'stock',
             'embalaje',
-            'detalle'
+            'detalle', 
+            'movimiento'
         )
 
 class RecetaSerializer(serializers.ModelSerializer):
@@ -53,11 +57,11 @@ class RecetaSerializer(serializers.ModelSerializer):
         fields = (
             'numero',
             'nombre',
-            'ingredientes',
             't_preparacion',
             'precio',
             'grupo',
-            'sub_grupo'
+            'sub_grupo',
+            'productos'
         )
 
 class MovimientoSerializer(serializers.ModelSerializer):
