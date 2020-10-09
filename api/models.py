@@ -94,6 +94,7 @@ class Receta(models.Model):
     HELADOS = 'HELADOS'
     TORTAS = 'TORTAS'
     KUCHENS = 'KUCHENS'
+    OTRO = 'OTRO'
 
     STATE_CHOICES1 = (
         (ENTRADA, 'ENTRADA'),
@@ -101,7 +102,6 @@ class Receta(models.Model):
         (APERITIVO, 'APERITIVO'),
         (AGREGADO, 'AGREGADO'),
         (BEBESTIBLE, 'BEBESTIBLE'),
-        (BAJATIVO, 'BAJATIVO'),
         (POSTRE, 'POSTRE'),
     )
 
@@ -120,9 +120,11 @@ class Receta(models.Model):
         (VINOS, 'VINOS'),
         (BEBIDAS, 'BEBIDAS'),
         (JUGOS, 'JUGOS'),
+        (BAJATIVO, 'BAJATIVO'),
         (HELADOS, 'HELADOS'),
         (TORTAS, 'TORTAS'),
         (KUCHENS, 'KUCHENS'),
+        (OTRO, 'OTRO'),
     )
 
     numero = models.AutoField(primary_key= True)
