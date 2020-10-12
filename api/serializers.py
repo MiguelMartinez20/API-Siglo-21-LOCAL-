@@ -72,5 +72,6 @@ class MovimientoSerializer(serializers.ModelSerializer):
             'ingreso',
             'egreso',
             'fecha',
+            'metodo',
             'detalle'
         )

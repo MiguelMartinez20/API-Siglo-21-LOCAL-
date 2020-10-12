@@ -36,10 +36,19 @@ class Mesa(models.Model):
 
 class Movimiento(models.Model):
 
+    EFECTIVO = 'EFECTIVO'
+    TARJETA = 'CREDITO/DEBITO'
+
+    STATE_CHOICES = (
+        (EFECTIVO, 'EFECTIVO'),
+        (TARJETA, 'CREDITO/DEBITO'),
+    )
+
     numero = models.AutoField(primary_key= True)
     ingreso = models.IntegerField(default=0)
     egreso = models.IntegerField(default=0)
     fecha = models.DateTimeField(default=timezone.now, blank=True)
+    metodo = models.CharField(max_length=14, choices=STATE_CHOICES, default=EFECTIVO)
     detalle = models.CharField(max_length = 255)
 
     def __str__(self):
