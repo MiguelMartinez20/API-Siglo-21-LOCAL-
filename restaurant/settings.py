@@ -92,8 +92,8 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE':   'django.db.backends.oracle',
-    'NAME':     '192.168.0.2:1521/xe',
-    'USER':     'c##siglo',
+    'NAME':     '192.168.0.5:1521/xe',
+    'USER':     'c##21siglo',
     'PASSWORD': 'django',
     'TEST':{
             'USER': 'default_test',

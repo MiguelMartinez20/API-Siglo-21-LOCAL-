@@ -149,6 +149,7 @@ class Receta(models.Model):
 
 class Reserva (models.Model):
 
+    numero = models.AutoField(primary_key=True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False, blank=False)
     mesa_num = models.ForeignKey(Mesa, on_delete=models.CASCADE, null=False, blank=False)
     fecha = models.DateField()
@@ -156,7 +157,7 @@ class Reserva (models.Model):
     observacion = models.CharField(max_length = 255, blank=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.numero)
 
 class Orden(models.Model):
     
@@ -180,7 +181,7 @@ class Orden(models.Model):
     minutos = models.IntegerField(default=5, blank=True) 
     mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE, blank=False, null=False)
     recetas = models.ManyToManyField(Receta)
-    movimiento = models.OneToOneField(Movimiento, on_delete=models.CASCADE, blank=True, null=True)
+    movimiento = models.ForeignKey(Movimiento, on_delete=models.CASCADE, blank=True, null=True)
 
     def publish(self):
         self.hora_ter = timezone.now()
