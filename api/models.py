@@ -189,3 +189,21 @@ class Orden(models.Model):
 
     def __str__(self):
         return str(self.numero)
+
+class Notificacion(models.Model):
+
+    ATENDIDA = 'ATENDIDA'
+    SIN_ATENCION = 'SIN_ATENCION'
+
+    STATE_CHOICES = (
+        (ATENDIDA, 'ATENDIDA'),
+        (SIN_ATENCION, 'SIN_ATENCION'),
+    )
+
+    numero = models.AutoField(primary_key= True)
+    estado =  models.CharField(max_length=14, choices=STATE_CHOICES, default=SIN_ATENCION)
+    mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE, blank=True, null=True)
+    detalle = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return str(self.numero)
