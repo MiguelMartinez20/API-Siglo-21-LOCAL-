@@ -202,6 +202,7 @@ class Notificacion(models.Model):
 
     numero = models.AutoField(primary_key= True)
     estado =  models.CharField(max_length=14, choices=STATE_CHOICES, default=SIN_ATENCION)
+    fecha = models.DateTimeField(default=timezone.now, blank=True)
     mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE, blank=True, null=True)
     detalle = models.CharField(max_length=255, blank=True)
 

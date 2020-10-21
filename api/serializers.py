@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cliente, Orden, Mesa, Producto, Receta, Movimiento
+from .models import Cliente, Orden, Mesa, Producto, Receta, Movimiento, Notificacion
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -73,5 +73,16 @@ class MovimientoSerializer(serializers.ModelSerializer):
             'egreso',
             'fecha',
             'metodo',
+            'detalle'
+        )
+
+class NotificacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notificacion
+        fields = (
+            'numero',
+            'estado',
+            'fecha',
+            'mesa',
             'detalle'
         )
