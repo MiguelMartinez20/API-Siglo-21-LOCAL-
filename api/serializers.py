@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Cliente, Orden, Mesa, Producto, Receta, Movimiento, Notificacion
+from .models import Cliente, Orden, Mesa, Producto, Receta, Movimiento, Notificacion, Rol
+from django.contrib.auth.models import User
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -85,4 +86,27 @@ class NotificacionSerializer(serializers.ModelSerializer):
             'fecha',
             'mesa',
             'detalle'
+        )
+
+class RolSerializer(serializers.ModelSerializer):
+
+    #usuario = serializers.CharField(source='user.username', read_only=True)
+    
+    class Meta:
+        model = Rol
+        fields = (
+            'usuario',
+            'rol'
+        )
+
+class UserSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = (
+            'username', 
+            'email',
+            'first_name', 
+            'last_name', 
+            'groups'
         )
