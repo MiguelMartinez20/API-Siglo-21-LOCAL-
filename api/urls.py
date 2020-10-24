@@ -3,7 +3,9 @@ from django.shortcuts import render
 # Create your urls here.
 
 from django.urls import path
-from .views import ClienteList, OrdenList, OrdenUpdate, OrdenDetail, MesaList, MesaDetail, MesaUpdate, ProductoList, ProductoDetail, ProductoUpdate, RecetaList, RecetaDetail, RecetaUpdate, Logout, MovimientoList, MovimientoDetail, MovimientoUpdate, NotificacionList, NotificacionDetail, NotificacionUpdate, RolList, UserList
+from . import views
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from .views import ClienteList, OrdenList, OrdenUpdate, OrdenDetail, MesaList, MesaDetail, MesaUpdate, ProductoList, ProductoDetail, ProductoUpdate, RecetaList, RecetaDetail, RecetaUpdate, Logout, MovimientoList, MovimientoDetail, MovimientoUpdate, NotificacionList, NotificacionDetail, NotificacionUpdate, UserList
 
 urlpatterns = [
     path('cliente/', ClienteList.as_view(), name='cliente_list'),
@@ -25,7 +27,11 @@ urlpatterns = [
     path('notificacion/', NotificacionList.as_view(), name='notificacion_list'),
     path('notificacion/<int:numero>/', NotificacionDetail.as_view(), name='notificacion_detail'),
     path('notificacion/<int:numero>/editar_notificacion/', NotificacionUpdate.as_view(), name='notificacion_update'),
-    path('rol/', RolList.as_view(), name='rol_list'),
     path('user/', UserList.as_view(), name='user_list'),
+    path('reset-password/', PasswordResetView.as_view(), name='reset_password'),
+    path('reset-password/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset-password/confirm/P<uidb64>P<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('accounts/login/', views.loginview, name ='loginview'),
     path('logout/', Logout.as_view(), name='logout'),
 ]

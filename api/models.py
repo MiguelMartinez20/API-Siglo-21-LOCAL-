@@ -209,26 +209,3 @@ class Notificacion(models.Model):
     def __str__(self):
         return str(self.numero)
 
-class Rol(models.Model):
-
-    ADMINISTRADOR = 'ADMINISTRADOR'
-    COCINA = 'COCINA'
-    BODEGA = 'BODEGA'
-    FINANZAS = 'FINANZAS'
-    GARZON = 'GARZON'
-    CLIENTE = 'CLIENTE'
-
-    STATE_CHOICES = (
-        (ADMINISTRADOR, 'ADMINISTRADOR'),
-        (COCINA, 'COCINA'),
-        (BODEGA, 'BODEGA'),
-        (FINANZAS, 'FINANZAS'),
-        (GARZON, 'GARZON'),
-        (CLIENTE, 'CLIENTE'),
-    )
-
-    usuario  = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=False, blank=False)
-    rol = models.CharField(max_length=14, choices=STATE_CHOICES, default=CLIENTE)
-
-    def __str__(self):
-        return self.rol

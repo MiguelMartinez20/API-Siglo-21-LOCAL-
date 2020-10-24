@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics
 from django.contrib.auth.models import User
-from .models import Cliente, Orden, Mesa, Producto, Receta, Movimiento, Notificacion, Rol
-from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer, ProductoSerializer, RecetaSerializer, MovimientoSerializer, NotificacionSerializer, RolSerializer, UserSerializer
+from .models import Cliente, Orden, Mesa, Producto, Receta, Movimiento, Notificacion
+from .serializers import ClienteSerializer, OrdenSerializer, MesaSerializer, ProductoSerializer, RecetaSerializer, MovimientoSerializer, NotificacionSerializer, UserSerializer
 from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
@@ -108,13 +108,13 @@ class NotificacionUpdate(generics.UpdateAPIView):
     serializer_class = NotificacionSerializer
     lookup_field = 'numero'
 
-class RolList(generics.ListCreateAPIView):
-    queryset = Rol.objects.all()
-    serializer_class = RolSerializer
-
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+def loginview(request):
+    url = "http://127.0.0.1:8000/admin"
+    return redirect(url)
 
 class Logout(APIView):
     def get(self, request, format=None):

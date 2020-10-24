@@ -148,3 +148,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8887",
     "https://127.0.0.1:8887"
 ]
+
+#Envio de Correos
+
+EMAIL_HOST = 'smtp.gmail.com'
+DEFAULT_FROM_EMAIL = 'siglo21food@gmail.com'
+SERVER_EMAIL = 'siglo21food@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'siglo21food@gmail.com'
+EMAIL_HOST_PASSWORD = '123pormi'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
