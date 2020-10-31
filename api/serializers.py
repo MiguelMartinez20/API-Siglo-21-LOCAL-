@@ -83,6 +83,7 @@ class NotificacionSerializer(serializers.ModelSerializer):
         fields = (
             'numero',
             'estado',
+            'tipo',
             'fecha',
             'mesa',
             'detalle'

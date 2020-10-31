@@ -194,14 +194,27 @@ class Notificacion(models.Model):
 
     ATENDIDA = 'ATENDIDA'
     SIN_ATENCION = 'SIN_ATENCION'
+    APROBADA = 'APROBADA'
+    RECHAZADA = 'RECHAZADA'
+
+    PAGO = 'PAGO'
+    SOLICITUD = 'SOLICITUD'
 
     STATE_CHOICES = (
         (ATENDIDA, 'ATENDIDA'),
         (SIN_ATENCION, 'SIN_ATENCION'),
+        (APROBADA, 'APROBADA'),
+        (RECHAZADA, 'RECHAZADA'),
+    )
+
+    STATE_CHOICES2 = (
+        (PAGO, 'PAGO'),
+        (SOLICITUD, 'SOLICITUD'),
     )
 
     numero = models.AutoField(primary_key= True)
     estado =  models.CharField(max_length=14, choices=STATE_CHOICES, default=SIN_ATENCION)
+    tipo = models.CharField(max_length=14, choices=STATE_CHOICES2, default=PAGO)
     fecha = models.DateTimeField(default=timezone.now, blank=True)
     mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE, blank=True, null=True)
     detalle = models.CharField(max_length=255, blank=True)
